@@ -1,0 +1,77 @@
+% layout 'vote';
+
+<hr>
+<a class="btn btn-info" href="/first-section" role="button">
+<span class="glyphicon glyphicon-arrow-left"></span>
+</a>
+<hr>
+
+<div>
+    <h2><%= $dat->{title} %></h2>
+    <%= $dat->{body} %>
+</div>
+<hr>
+<div class="ld-box text-right">
+<%= include 'voting/vote' %>
+</div>
+
+<script>
+//---------- Like/Unlike of article ----------------------------------------
+async function LikeArtcl(titleAlias, articleId, vote_span, user_id) {
+
+let cookieClient = getCookie('client');
+if( cookieClient == undefined ){
+    document.location.reload();
+}
+let likedislikeBox = document.querySelector('.ld-box');
+
+  let response = await fetch("/likeartcl?title_alias=" + 
+  titleAlias + 
+  '&article_id=' + 
+  articleId + 
+  '&vote_span=' + 
+  vote_span + 
+  '&user_id=' + 
+  user_id);
+  
+  if (response.ok) {
+	let respRendr = await response.text(); 
+    likedislikeBox.innerHTML = respRendr;
+  }else {
+    alert("Error HTTP: " + response.status);
+  }
+}
+
+async function UnlikeArtcl(titleAlias, articleId, vote_span, user_id) {
+
+let cookieClient = getCookie('client');
+if( cookieClient == undefined ){
+    document.location.reload();
+}
+let likedislikeBox = document.querySelector('.ld-box');
+
+  let response = await fetch("/dislikeartcl?title_alias=" + 
+  titleAlias + 
+  '&article_id=' + 
+  articleId + 
+  '&vote_span=' + 
+  vote_span + 
+  '&user_id=' + 
+  user_id);
+
+  if (response.ok) {
+	let respRendr = await response.text(); 
+    likedislikeBox.innerHTML = respRendr;
+  }else {
+    alert("Error HTTP: " + response.status);
+  }
+}
+//---------- Like/Unlike of article END ------------------------------------
+
+function getCookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+</script>

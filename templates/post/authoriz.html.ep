@@ -1,0 +1,4 @@
+% use SessCheck;
+% use Vote::Serve;
+
+<%= $self->render_to_string(text => Vote::Serve->getauthent($self, $sess_check)) %>

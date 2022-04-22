@@ -1,0 +1,14 @@
+% layout 'vote';
+
+  <a href="/first-section">
+    <h1 class="text-center" style="z-index: 100; color: blue; font-weight: bold">
+      Like/Dislike system with Mojolicious
+    </h1>
+  </a>
+<hr>
+<div style="margin:auto; text-align: center; border:1px solid silver; border-radius: 5px">
+<a href="https://mojolicious.org" target="_blank">
+<img align="center" src="/img/unicorn.png">
+</a>
+</div>
+<hr>

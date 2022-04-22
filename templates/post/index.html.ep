@@ -1,0 +1,13 @@
+% layout 'vote';
+
+<hr>
+% my $data = $self->db->select('posts', ['id', 'title', 'announce']);
+% while (my $next = $data->array) {
+<div>
+  <a href="/first-section/<%= $$next[0] %>">
+    <h2><%= $$next[1] %></h2>
+  </a>
+    <%= $$next[2] %>
+</div>
+<hr>
+%  }

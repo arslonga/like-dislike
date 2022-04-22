@@ -1,0 +1,68 @@
+% my $href;
+% my $users = $self->db->select('ausers', ['*'])->hashes;
+
+<!DOCTYPE html>
+<html>
+  <head><title>Vote system</title>  
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+<script src="/js/jquery-1.9.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<style>
+a, body { color: #2a2a2a }
+body { font-family: 'Helvetica Neue', Helvetica, sans-serif }
+.select{
+color: silver;
+}
+#chevron_stl{
+border-width:0px; 
+padding: 5px; 
+background: none;
+color: gray    
+}
+#chevron_stl[disabled]{
+color: #CDCDCD;   
+}
+input[type=text], 
+textarea { 
+width: 600px;
+}
+button:active{
+border: 0;
+}
+</style>
+</head>
+  
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+<% if( $self->req->url eq '/' ){
+    $href = '';
+}else{
+    $href=<<HTML;
+<a href="/">
+   <h1 class="text-center" style="font-weight: bold">Like/Dislike system with Mojolicious</h1>
+</a>
+HTML
+
+ }
+%>
+    <%== $href %>
+    % if( $href ){
+    <div id="authent-form">
+      <%= include 'post/auth' =%>
+    </div>
+    % }
+
+<div id="divID"></div>
+
+    <%= content %>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

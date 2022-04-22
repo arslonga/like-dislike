@@ -1,0 +1,10 @@
+% use SessCheck;
+% use Vote::Serve;
+% my $sess_check;
+% my $nickname;
+% eval{ $nickname = $self->session('client')->[0] };
+% my $client_check = SessCheck->client( $self, $nickname );
+
+<% $sess_check = $client_check ? 'yes' : 'no'; %>
+
+<%= $self->render_to_string(text => Vote::Serve->getauthent($self, $sess_check)) %>

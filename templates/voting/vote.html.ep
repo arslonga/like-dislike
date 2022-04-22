@@ -1,0 +1,20 @@
+
+<button type="button" name="<%= $like_btn_name %>" class="btn btn-default" 
+onclick="LikeArtcl('<%= $section_ident %>', 
+                   '<%= $id %>', 
+                   '<%= $like_id %>', 
+                   '<%= $client_id %>'); 
+                   this.disabled='disabled';" 
+                   id="chevron_stl"<%= $status %>>
+<span id="<%= $section_ident.'_'.$client_id.'-up' %>" class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+</button><span id="<%= $like_id %>" class="like_unlike"><%= $liked_cnt %></span>
+&nbsp;&nbsp;
+<button type="button" name="<%= $unlike_btn_name %>" class="btn btn-default" 
+onclick="UnlikeArtcl('<%= $section_ident %>', 
+                     '<%= $id %>', 
+                     '<%= $unlike_id %>', 
+                     '<%= $client_id %>'); 
+                     this.disabled='disabled';" 
+                     id="chevron_stl"<%= $status %>>
+<span id="<%= $section_ident.'_'.$client_id.'-down' %>" class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+</button><span id="<%= $unlike_id %>" class="like_unlike"><%= $unliked_cnt %></span>
